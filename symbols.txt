@@ -1,0 +1,16 @@
+osreport = 0x801A25D0
+settings = 0x80004004
+
+inputdata = 0x809bd70c
+racedata = 0x809bd728
+raceinfo = 0x809bd730
+menudata = 0x809c1e38
+player = 0x809c18f8
+musichandler = 0x809c27f8
+
+rknetcontroller = 0x809c20d8
+PlayBRSARSound = 0x80716608
+ChangeMusic = 0x80711ac4
+
+__mi__5TimerFP5Timer = 0x807ee860
+__dt__5TimerFv = 0x8051c334
