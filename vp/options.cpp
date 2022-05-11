@@ -34,7 +34,6 @@ int miiheads(Racedata *racedata, int r4, int r5, u8 id){
     return charId;
 }
 
-//kmBranch(0x807eeed0, &testFunction);
 kmCall(0x807eb154, &miiheads);
 kmWrite32(0x807eb15c, 0x60000000);
 kmWrite32(0x807eb160, 0x88de01b4);

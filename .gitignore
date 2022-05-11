@@ -20,6 +20,9 @@ examples/*
 shield-fix/*
 preproc_demo.cpp
 
+# Testing
+testing/*
+
 # clangd flags
 compile_flags.txt
 
