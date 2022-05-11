@@ -87,4 +87,18 @@
 #define kmCallDefAsm(addr) \
 	kmCallDefInt(__COUNTER__, addr, asm void, )
 
+#define kmOnLoad(func) \
+	static int kmIdentifier(Int, counter) = func()
+
+#define kmOnLoadDefInt(counter, returnType) \
+	static returnType kmIdentifier(UserFunc, counter)(); \
+	kmOnLoad(kmIdentifier(UserFunc, counter)); \
+	static returnType kmIdentifier(UserFunc, counter)()
+
+#define kmOnLoadDefCpp() \
+	kmOnLoadDefInt(__COUNTER__, int)
+
+#define kmOnLoadDefAsm() \
+	kmOnLoadDefInt(__COUNTER__, asm int)
+
 #endif
