@@ -1,4 +1,4 @@
-osreport = 0x801A25D0
+OSReport = 0x801A25D0
 settings = 0x80004004
 
 inputdata = 0x809bd70c
@@ -14,3 +14,11 @@ ChangeMusic = 0x80711ac4
 
 __mi__5TimerFP5Timer = 0x807ee860
 __dt__5TimerFv = 0x8051c334
+
+DVDOpen = 0x8015e2bc
+DVDReadPrio = 0x8015e834
+DVDClose = 0x8015e568
+
+OSFatal = 0x801a4ec4
+
+memcpy = 0x80005f34
