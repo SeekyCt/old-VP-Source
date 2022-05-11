@@ -74,3 +74,18 @@ kmCall(0x8070b2f8, &musicSpeedup);
 
 kmWrite32(0x8070b2c0, 0x60000000);
 kmWrite32(0x8070b2d4, 0x60000000);
+
+// Silent Controller Changing
+kmCallDefAsm(0x8061AF94){
+
+    nofralloc
+    
+    lis r12, settings.silentController@ha
+    lbz r12, settings.silentController@l(r12)
+    cmpwi r12, 0
+    bne+ end
+    cmpwi r0, 0
+
+    end:
+    blr
+}
