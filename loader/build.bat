@@ -8,7 +8,6 @@ echo "Compiling cpps..."
 
 :: Link
 echo Linking...
-..\Kamek\bin\Debug\Kamek mkw.o kamekLoader.o -static=0x80004000 -output-code=Loader.bin -output-riiv=Loader.xml
-..\Kamek\bin\Debug\Kamek mkw.o kamekLoader.o -static=0x80004000 -output-code="C:\Data\James\VP\Uploaded Packs\varietypack\boot\Loader.bin" -output-riiv=Loader.xml
+..\Kamek\bin\Debug\Kamek mkw.o kamekLoader.o -static=0x80004000 -output-code=Loader.bin
 
 ENDLOCAL

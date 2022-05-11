@@ -13,15 +13,16 @@ loader.xml
 *-loader.xml
 *-dynamic.*.bin
 cw/
-Kamek/
 
 # Kamek examples
 examples/*
 shield-fix/*
 preproc_demo.cpp
 
-# Testing
+# Not relevant
 testing/*
+vp/move.bat
+vp/files/*
 
 # clangd flags
 compile_flags.txt
