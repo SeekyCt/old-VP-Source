@@ -11,6 +11,8 @@ Contributors:
 */
 #pragma once
 #include <random.h>
+#include <kamek.h>
+#include <inputdata.h>
 
 class GmDataAbstract {
 public:
@@ -113,7 +115,7 @@ public:
   Timer * lapFinishTimes; // array of lapCount length
   Timer * raceFinishTime;
   u8 unknown_0x44[0x48-0x44];
-  void * controllerHolder; // see inputdata.h
+  ControllerHolder * controllerHolder; // see inputdata.h
   u8 unknown_0x4c[0x54-0x4c];
 }; // Total size 0x54
 

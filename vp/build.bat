@@ -17,7 +17,6 @@ for %%f in (*.cpp) do (
 )
 
 :: Compile CPP
-@echo on
 SET OBJECTS=
 FOR %%H IN (%CPPFILES%) DO (
     echo "Compiling %%H.cpp..."

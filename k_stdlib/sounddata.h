@@ -1,5 +1,6 @@
 #pragma once
 #include <nw4r.h>
+#include <kamek.h>
 
 struct BasicSound{
     u8 unknown_0x0[0x34];

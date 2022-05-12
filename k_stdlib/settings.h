@@ -1,4 +1,5 @@
 #pragma once
+#include <kamek.h>
 
 enum VPGamemode{
     Normal = 0x0,

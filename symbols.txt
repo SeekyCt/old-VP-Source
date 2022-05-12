@@ -1,4 +1,6 @@
-osreport = 0x801A25D0
+OSReport = 0x801A25D0
+strcmp = 0x8001329c
+
 settings = 0x80004004
 
 inputdata = 0x809bd70c
@@ -11,6 +13,8 @@ musichandler = 0x809c27f8
 rknetcontroller = 0x809c20d8
 PlayBRSARSound = 0x80716608
 ChangeMusic = 0x80711ac4
+
+ARCConvertPathToEntryNum = 0x80124894
 
 __mi__5TimerFP5Timer = 0x807ee860
 __dt__5TimerFv = 0x8051c334

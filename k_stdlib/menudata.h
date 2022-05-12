@@ -4,6 +4,8 @@ MenuData is the class that holds the information about the current displayed Men
 
 #pragma once
 #include <common.h>
+#include <kamek.h>
+#include <inputdata.h>
 
 typedef enum GhostType {
     BEST_TIME=0x1,
@@ -189,7 +191,7 @@ typedef enum MenuType {
 };
 
 struct ControllerInfo{
-  void * controllerHolder; // see inputdata.h
+  ControllerHolder * controllerHolder; // see inputdata.h
   u32 unknown_ints[3];
 }; // datasize 0x10
 

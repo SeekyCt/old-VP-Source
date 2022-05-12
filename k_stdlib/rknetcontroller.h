@@ -1,4 +1,6 @@
 #pragma once
+#include <kamek.h>
+
 class Rknetcontroller{
 public:
     u8 unknown_0x0[0x28 - 0x0];

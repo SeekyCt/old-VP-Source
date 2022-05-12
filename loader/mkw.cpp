@@ -64,16 +64,7 @@ void unknownVersion()
 
 void loadIntoMKW()
 {
-    int region = 0;
-    
-	switch (*((u16*)0x8000620A))
-	{
-		case 0x54A9: region = 'P'; break;
-		case 0x5409: region = 'E'; break;
-		case 0x53CD: region = 'J'; break;
-		case 0x5511: region = 'K'; break;
-		default: unknownVersion();
-	}
+    u8 region = *(u8 *)(0x80000003);
     
 	// choose functions
 	loaderFunctions *funcs = NULL;
@@ -87,7 +78,7 @@ void loadIntoMKW()
 	}
 
 	char path[64];
-	funcs->sprintf(path, "/bmc/%c.bin", region);
+	funcs->sprintf(path, "/varietypack/%c.bin", region);
 	loadKamekBinaryFromDisc(funcs, path);
     
     return;

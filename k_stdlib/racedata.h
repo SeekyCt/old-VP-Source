@@ -13,6 +13,7 @@ References:
 
 #pragma once
 #include <common.h>
+#include <kamek.h>
 
 typedef enum PlayerType{
     PLAYER_REAL_LOCAL,

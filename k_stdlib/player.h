@@ -15,6 +15,7 @@ References:
 #pragma once
 #include <common.h>
 #include <sounddata.h>
+#include <kamek.h>
 
 enum VehicleType{
     KART=0x0,

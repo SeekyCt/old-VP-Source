@@ -1,4 +1,5 @@
 #pragma once
+#include <kamek.h>
 
 /*
 Random is the game's class used for RNG

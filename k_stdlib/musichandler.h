@@ -2,6 +2,7 @@
 #include <egg.h>
 #include <common.h>
 #include <racedata.h>
+#include <kamek.h>
 
 typedef enum RaceState{
 	RACEINTRO = 0x2,
