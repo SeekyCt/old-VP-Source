@@ -7,6 +7,13 @@ MenuData is the class that holds the information about the current displayed Men
 #include <kamek.h>
 #include <inputdata.h>
 
+typedef enum ControllerType{
+    WHEEL=0x11,
+    NUNCHUCK=0x12,
+    CLASSIC=0x13,
+    GCN=0x24
+};
+
 typedef enum GhostType {
     BEST_TIME=0x1,
     CONTINENTAL_RECORD=0x2,
@@ -191,8 +198,10 @@ typedef enum MenuType {
 };
 
 struct ControllerInfo{
-  ControllerHolder * controllerHolder; // see inputdata.h
-  u32 unknown_ints[3];
+    u32 controllerSlotAndType;
+    u32 controllerSlotAndTypeActive;
+    u32 wantsController;
+    ControllerHolder * controllerHolder; // see inputdata.h
 }; // datasize 0x10
 
 struct Scene {
@@ -249,9 +258,6 @@ class MenuDataSub{
 public:
     virtual int vtableTemp();
 	//vtable 0x808BB44
-	u32 controllerInfo;
-	u32 controllerInfoActive;
-	u32 wantsController;
 	ControllerInfo controllerInfos[4];
 	u8 unknown_0x80[0x88 - 0x80];
 	u32 isTransitionDone;
@@ -280,3 +286,5 @@ public:
     u32 *field18_0x94; /* 0x14 struct */
     MenuData98 *menudata98;
 }; //Total Size 0x9C
+
+extern MenuData *menudata;

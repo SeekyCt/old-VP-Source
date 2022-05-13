@@ -17,21 +17,35 @@ References:
 #include <sounddata.h>
 #include <kamek.h>
 
+class PlayerModel;
+
 enum VehicleType{
     KART=0x0,
     OUTSIDE_BIKE=0x1,
     INSIDE_BIKE=0x2
 };
 
-typedef struct Vec3{
-  float x, y, z;
-}; // total size 0xc
-
-typedef struct Quat{
-  float x, y, z, w;
-}; // total size 0x10
-
-typedef float Mat34[3][4];
+typedef enum DamageType {
+    SPINOUT_BANANA=0x0,
+    SPINOUT_GOOMBA=0x1,
+    KNOCKBACK_SHELL_FIB=0x2,
+    KNOCKBACK_STAR=0x3,
+    KNOCKBACK_CHOMP=0x4,
+    KNOCKBACK_CAR=0x5,
+    KNOCKBACK_BULLET=0x6,
+    LAUNCH_EXPLOSION=0x7,
+    LAUNCH_CATAQUACK=0x8,
+    SPINOUT_FIRE=0x9,
+    SPINOUT_SHOCK=0xa,
+    POW=0xb,
+    SQUISH_THWOMP=0xc,
+    SQUISH_MEGA=0xd,
+    SQUISH_CAR=0xe,
+    SPINOUT_ZAPPER=0xf,
+    SQUISH_RESPAWN=0x10,
+    SPINOUT_THUNDERCLOUD=0x11,
+    NO_DAMAGE=0xffffffff
+};
 
 class PlayerPointers;
 class PlayerSub10;
@@ -133,7 +147,7 @@ public:
   PlayerSub10 *playerSub10;
 }; // total size 0x50
 
-class PlayerTrickBike : PlayerTrick {
+class PlayerTrickBike : public PlayerTrick {
 public:
   virtual ~PlayerTrickBike(); // 80576afc
   virtual void start(Vec3 *left); // 80576758
@@ -223,7 +237,7 @@ public:
   virtual int hop(); // 8057da5c
   virtual int updateMtCharge(); // 8057ee50
   virtual void unknown_23();
-  float speedMultiplier; // 50cc: 0.8, 100cc: 0.9, 150cc: 1.0
+  float speedMultiplier; // 50cc: public 0.8, 100cc: public 0.9, 150cc: public 1.0
   float baseSpeed;
   float softSpeedLimit;
   float unknown_0x1c;
@@ -262,7 +276,7 @@ public:
   float unknown_0xf0;
   float divingRot;
   float boostRot;
-  s16 driftState; // 1: charging mt, 2: mt charged, 3: smt charged
+  s16 driftState; // 1: public charging mt, 2: public mt charged, 3: public smt charged
   s16 mtCharge;
   s16 smtCharge;
   s16 mtBoost;
@@ -302,7 +316,7 @@ public:
   float hopPosY;
   float hopGravity;
   u8 unknown_0x234[0x248-0x234];
-  u32 drivingDirection; // 0: forwards, 1: braking, 2: waiting on the backwards counter, 3: backwards
+  u32 drivingDirection; // 0: public forwards, 1: public braking, 2: public waiting on the backwards counter, 3: public backwards
   u16 backwardsAllowCounter;
   u8 unknown_0x24e[2];
   u32 specialFloor; // bit flags:
@@ -321,15 +335,17 @@ public:
   u8 unknown_0x292[2];
 }; // Total size 0x294
 
-class PlayerSub10Remote : PlayerSub10 {
+class PlayerSub10Remote : public PlayerSub10 {
+public:
   // vtable 808b5d90
 }; // Total size 0x294
 
-class PlayerSub10RealLocal : PlayerSub10 {
+class PlayerSub10RealLocal : public PlayerSub10 {
+public:
   // vtable 808b5e78
 }; // Total size 0x294
 
-class PlayerSub10Bike : PlayerSub10 {
+class PlayerSub10Bike : public PlayerSub10 {
 public:
   PlayerSub10Bike(); // 80587b30
 
@@ -359,21 +375,24 @@ public:
   void *turnParams;
 }; // Total size 0x2c4
 
-class PlayerSub10BikeRemote : PlayerSub10Bike {
+class PlayerSub10BikeRemote : public PlayerSub10Bike {
+public:
   // vtable 808b5d18
 }; // Total size 0x2c4
 
-class PlayerSub10BikeRealLocal : PlayerSub10Bike {
+class PlayerSub10BikeRealLocal : public PlayerSub10Bike {
+public:
   // vtable 808b5e00
 }; // Total size 0x2c4
 
 class PlayerSub14 {
+public:
   PlayerSub14(); // 805672cc
   PlayerPointers *playerPointers;
   u8 unknown_0x4[0xc-0x4];
   virtual void unknown_vtable();
   float unknown_0x10[3];
-  UnkType currentDamage;
+  DamageType currentDamage;
   u8 unknown_0x20[0x100-0x20];
 }; // Total size 0x100
 
@@ -405,12 +424,12 @@ public:
   u8 unknown_0x8[0x2c-0x8];
   u32 surfaceProperties; // bit flags:
     /*
-       0: wall
-       1: solid oob
-       4: boost ramp
-       6: offroad
-       8: boost panel or ramp
-      11: trickable
+       0: public wall
+       1: public solid oob
+       4: public boost ramp
+       6: public offroad
+       8: public boost panel or ramp
+      11: public trickable
     */
   u8 unknown_0x30[0x48-0x30];
   s16 preRespawnTimer;
@@ -586,7 +605,7 @@ public:
   u8 unknown_0x180[0x1b4-0x188];
 }; // Total size 0x1b4
 
-class PlayerPhysicsBike : PlayerPhysics {
+class PlayerPhysicsBike : public PlayerPhysics {
 public:
   virtual ~PlayerPhysicsBike(); // 805b66e4
   virtual UnkType stabilize(); // 805b6448
@@ -688,7 +707,7 @@ public:
   u8 unknown_0x7c[0x8c-0x7c];
 }; // Total size 0x8c
 
-class PlayerGraphics : Object3D { // tentative name
+class PlayerGraphics : public Object3D { // tentative name
 public:
   UnkType getWheelMatrixBike(Mat34 *wheelMatrix, u32 wheelIdx); // 8056dd54
   u8 unknown_0x8c[0x90-0x8c];
@@ -794,7 +813,7 @@ public:
   Vec3 bottomDirection;
 }; // Total size 0x48
 
-class Wheel0 : Object3D {
+class Wheel0 : public Object3D {
 public:
   Wheel0(PlayerParams *playerParams); // 80598b08
   UnkType init(); // 80598bd4
@@ -804,7 +823,7 @@ public:
   WheelPhysicsHolder *wheelPhysicsHolder;
 }; // Total size 0x94
 
-class Wheel1 : Object3D {
+class Wheel1 : public Object3D {
 public:
   Wheel1(PlayerParams *playerParams, bool xMirroredKart, u32 bspWheelIdx); // 8059aa44
 
@@ -816,11 +835,19 @@ public:
   float unknown_0x9c;
 }; // Total size 0xa0
 
-class Wheel1Front : Wheel1 {
+class Wheel1Front : public Wheel1 {
 public:
   // vtable 808b6798
   u8 unknown_0xa0[0xd0-0xa0];
 }; // Total size 0xd0
+
+class PlayerItemPoint {
+public:
+  u8 ITPT;
+  u8 unknown_0x1[3];
+  Vec3 unknown_0x4;
+};// Total Size 0x10
+
 
 class PlayerSound {
 public:
@@ -904,11 +931,11 @@ public:
   virtual void unknown_vtable();
   PlayerSub *playerSub;
   PlayerParams *params;
-  int *unknown_0x18;
+  PlayerModel *model;
   PlayerPointers pointers;
 }; // Total size 0x80
 
-class PlayerBike : Player {
+class PlayerBike : public Player {
 public:
   UnkType initWheels(); // 8058f2e8
 
@@ -916,6 +943,7 @@ public:
 }; // Total size 0x80
 
 class PlayerHolderSub {
+public:
   // vtable 802a2b48
   virtual void unknown_0x0();
   u8 unknown_0x4[0x10-0x4];
@@ -940,3 +968,5 @@ public:
   u8 *array1; // contains 1 element per player, set to the player index modulo 4
   u8 unknown_0x34[0x38-0x34];
 }; // Total size 0x38
+
+extern PlayerHolder *player;

@@ -19,7 +19,7 @@ class MusicHandlerSub{
 	u8 unknown[0x1c-0xc];
 };//total size 0x1C
 
-class MusicHandler : EGG::Disposer {
+class MusicHandler : public EGG::Disposer {
 public:
 	CourseId courseId;
 	u8 unknown_0x14[0x30-0x14];
@@ -35,3 +35,4 @@ public:
 	u8 unknown_0x70[0x178-0x70];
 };//Total Size 0x178
 
+extern MusicHandler *musichandler;

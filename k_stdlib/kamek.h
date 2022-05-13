@@ -4,6 +4,8 @@
  * (c) Treeki 2010-2018
  */
 
+#define abs(n) __abs(n)
+
 #ifndef __KAMEK_H
 #define __KAMEK_H
 

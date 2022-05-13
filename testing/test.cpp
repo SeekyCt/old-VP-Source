@@ -1,23 +1,27 @@
 #include <kamek.h>
+#include <racedata.h>
+#include <raceinfo.h>
 #include <menudata.h>
+#include <settings.h>
 #include <player.h>
+#include <rknetcontroller.h>
+#include <musichandler.h>
+#include <common.h>
+#include <base/c_stdlib.h>
+#include <item.h>
 
 extern MenuData *menudata;
 extern PlayerHolder *player;
-extern "C" void osreport(const char * format, ...);
+extern PlayerModel *playermodel;
+extern "C" void OSReport(const char * format, ...);
 
 bool testFunction(bool hasItem, u32 *itemHolderPlayers){
     
-    osreport("PlayerSub10BikeRealLocal: %x", sizeof(PlayerSub10BikeRealLocal));
-    osreport("PlayerSub10BikeRemote: %x", sizeof(PlayerSub10BikeRemote));
-    osreport("PlayerSub10Bike: %x", sizeof(PlayerSub10Bike));
-    osreport("PlayerSub10RealLocal: %x", sizeof(PlayerSub10RealLocal));
-    osreport("PlayerSub10Remote: %x", sizeof(PlayerSub10Remote));
-    osreport("PlayerSub10: %x", sizeof(PlayerSub10));
-    osreport("PlayerZipper: %x", sizeof(PlayerZipper));
-    osreport("PlayerTrickBike: %x", sizeof(PlayerTrickBike));
-    osreport("PlayerTrick: %x", sizeof(PlayerTrick));
-    osreport("PlayerBoost: %x", sizeof(PlayerBoost));
+    
+    OSReport("PlayerModel: %d", playermodel->trickDirection);
+    OSReport("PlayerModel: %d", playermodel->isHq);
+    OSReport("PlayerModel: %d", playermodel->isNotFocusedInLiveView);
+    OSReport("PlayerModel: %x", sizeof(PlayerModel));
     
     return hasItem;
 }

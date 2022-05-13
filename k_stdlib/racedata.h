@@ -174,3 +174,5 @@ public: // vtable override 808b3268
   
     RacedataMain main;
 };  // Total size 0x73f0
+
+extern Racedata *racedata;

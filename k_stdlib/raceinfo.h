@@ -44,7 +44,7 @@ public:
   u8 unknown_0xc[0x14-0xc];
 }; // Total size 0x14
 
-class GmDataOnlineVs : GmDataAbstract {
+class GmDataOnlineVs : public GmDataAbstract {
 public: // vtable override 808b3928
   // unknown virtual function 1
   virtual int updateLocalPlayers(); // 8053fb98
@@ -71,7 +71,7 @@ public:
   u8 unknown_0x40[0x50-0x40];
 }; // Total size 0x50
 
-class RaceinfoRandom : Random {
+class RaceinfoRandom : public Random {
 public:
   RaceinfoRandom(s32 r4); // 80555514
 }; // Total size 0x18
@@ -150,3 +150,5 @@ public:
   void * kmg;
   u8 unknown_0x40[0x4c-0x40];
 }; // Total size 0x4c
+
+extern Raceinfo *raceinfo;

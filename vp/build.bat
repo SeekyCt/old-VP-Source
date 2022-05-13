@@ -9,7 +9,7 @@ mkdir build\tileset
 
 :: CPP compilation settings
 SET CC="../cw/mwcceppc.exe"
-SET CFLAGS=-I- -i ../k_stdlib -Cpp_exceptions off -enum int -O4,s -use_lmw_stmw on -fp hard -rostr -sdata 0 -sdata2 0 -maxerrors 1
+SET CFLAGS=-I- -i ../k_stdlib -i ../vp -Cpp_exceptions off -enum int -O4,s -use_lmw_stmw on -fp hard -rostr -sdata 0 -sdata2 0 -maxerrors 1
 SET CPPFILES=
 for %%f in (*.cpp) do (
     SET "CPPFILES=%%~nf !CPPFILES!"

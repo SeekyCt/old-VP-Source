@@ -2,9 +2,10 @@
 #include <kamek.h>
 
 enum VPGamemode{
-    Normal = 0x0,
+    NOMODE = 0x0,
     BSS = 0x1,
-    BBB = 0x2
+    BBB = 0x2,
+    CHAOTIC = 0x3
 };
 
 struct Settings{
@@ -14,3 +15,5 @@ public:
     bool silentController;
     bool miiHeads;
 };
+
+extern Settings settings;

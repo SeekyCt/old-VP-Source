@@ -17,7 +17,19 @@ typedef struct {
 void OSTicksToCalendarTime(u64 time, OSCalendarTime *result);
 
 /* MTX Module */
-typedef struct { f32 x, y; } Vec2;
+typedef struct Vec2{
+	 f32 x, y; 
+} ;
+
+typedef struct Vec3{
+  float x, y, z;
+}; // total size 0xc
+
+typedef struct Quat{
+  float x, y, z, w;
+}; // total size 0x10
+
+typedef float Mat34[3][4];
 typedef struct { f32 x, y, z; } Vec;
 typedef struct { s16 x, y, z; } S16Vec;
 typedef f32 Mtx[3][4];
